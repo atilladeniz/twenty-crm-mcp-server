@@ -1,0 +1,20 @@
+{
+    "name": "twenty-crm-mcp",
+    "version": "1.0.0",
+    "description": "MCP server for Twenty CRM integration",
+    "type": "module",
+    "main": "index.js",
+    "scripts": {
+      "start": "node index.js",
+      "dev": "node --inspect index.js"
+    },
+    "dependencies": {
+      "@modelcontextprotocol/sdk": "^0.6.0"
+    },
+    "engines": {
+      "node": ">=18"
+    },
+    "keywords": ["mcp", "twenty", "crm", "server"],
+    "author": "Your Name",
+    "license": "MIT"
+  }
