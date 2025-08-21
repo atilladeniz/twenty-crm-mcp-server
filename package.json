@@ -1,20 +1,40 @@
 {
-    "name": "twenty-crm-mcp",
-    "version": "1.0.0",
-    "description": "MCP server for Twenty CRM integration",
-    "type": "module",
-    "main": "index.js",
-    "scripts": {
-      "start": "node index.js",
-      "dev": "node --inspect index.js"
-    },
-    "dependencies": {
-      "@modelcontextprotocol/sdk": "^0.6.0"
-    },
-    "engines": {
-      "node": ">=18"
-    },
-    "keywords": ["mcp", "twenty", "crm", "server"],
-    "author": "Your Name",
-    "license": "MIT"
-  }
+  "name": "twenty-crm-mcp-server",
+  "version": "1.0.0",
+  "description": "A Model Context Protocol (MCP) server for Twenty CRM integration. Enables natural language interactions with your CRM data through Claude and other AI assistants.",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --inspect index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^0.6.0"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "mcp",
+    "twenty",
+    "crm",
+    "server",
+    "claude",
+    "ai",
+    "assistant",
+    "natural-language",
+    "api",
+    "integration"
+  ],
+  "author": "mhenry3164",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mhenry3164/twenty-crm-mcp-server.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mhenry3164/twenty-crm-mcp-server/issues"
+  },
+  "homepage": "https://github.com/mhenry3164/twenty-crm-mcp-server#readme"
+}
