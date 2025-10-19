@@ -32,6 +32,20 @@ if (!process.env.SCHEMA_PATH && existsSync(defaultSchemaPath)) {
   process.env.SCHEMA_PATH = defaultSchemaPath;
 }
 
+function cloneSchema(value) {
+  if (value === undefined) {
+    return undefined;
+  }
+  if (typeof globalThis.structuredClone === "function") {
+    try {
+      return globalThis.structuredClone(value);
+    } catch {
+      // fall back to JSON clone
+    }
+  }
+  return JSON.parse(JSON.stringify(value));
+}
+
 export class TwentyCRMServer {
   constructor(options = {}) {
     this.options = options;
@@ -71,7 +85,8 @@ export class TwentyCRMServer {
       ["get_object_metadata", async (args = {}) => this.getObjectMetadata(args.objectName)],
       ["get_local_object_schema", async (args = {}) => this.getLocalObjectSchema(args.objectName)],
       ["get_available_operations", async (args = {}) => this.getAvailableOperations(args)],
-      ["search_records", async (args = {}) => this.searchRecords(args)]
+      ["search_records", async (args = {}) => this.searchRecords(args)],
+      ["create_note_for_person", async (args = {}) => this.createNoteForPerson(args)]
     ]);
 
     this.setupToolHandlers();
@@ -195,16 +210,18 @@ export class TwentyCRMServer {
       const labelSingular = nameSingular.charAt(0).toUpperCase() + nameSingular.slice(1);
       const labelPlural = namePlural.charAt(0).toUpperCase() + namePlural.slice(1);
 
+      const fallback = this.getFallbackDefinition(namePlural, nameSingular, labelSingular, labelPlural);
+
       this.registerObjectSchema({
         nameSingular,
         namePlural,
         labelSingular,
         labelPlural,
         description: `Generic ${labelPlural.toLowerCase()} operations`,
-        properties: {},
-        required: [],
+        properties: fallback.properties,
+        required: fallback.required,
         fieldMetadata: [],
-        relationMetadata: []
+        relationMetadata: fallback.relationMetadata
       });
     }
   }
@@ -244,6 +261,50 @@ export class TwentyCRMServer {
       default:
         return namePlural.endsWith("s") ? namePlural.slice(0, -1) : namePlural;
     }
+  }
+
+  getFallbackDefinition(namePlural, nameSingular, labelSingular, labelPlural) {
+    if (namePlural === 'noteTargets') {
+      const properties = {
+        noteId: { type: 'string', description: 'ID of the note to link' },
+        personId: { type: 'string', description: 'Person ID to attach' },
+        companyId: { type: 'string', description: 'Optional company ID' }
+      };
+
+      const relationMetadata = [
+        {
+          name: 'note',
+          alias: 'noteId',
+          relationType: 'MANY_TO_ONE',
+          targetNameSingular: 'note',
+          targetNamePlural: 'notes',
+          targetLabelSingular: 'Note',
+          targetLabelPlural: 'Notes'
+        },
+        {
+          name: 'person',
+          alias: 'personId',
+          relationType: 'MANY_TO_ONE',
+          targetNameSingular: 'person',
+          targetNamePlural: 'people',
+          targetLabelSingular: 'Person',
+          targetLabelPlural: 'People'
+        },
+        {
+          name: 'company',
+          alias: 'companyId',
+          relationType: 'MANY_TO_ONE',
+          targetNameSingular: 'company',
+          targetNamePlural: 'companies',
+          targetLabelSingular: 'Company',
+          targetLabelPlural: 'Companies'
+        }
+      ];
+
+      return { properties, required: [], relationMetadata };
+    }
+
+    return { properties: {}, required: [], relationMetadata: [] };
   }
 
   generateToolsFromSchema() {
@@ -395,8 +456,7 @@ export class TwentyCRMServer {
 
   buildGlobalTools() {
     const defaultSearchObjects = this.getDefaultSearchObjects();
-
-    return [
+    const tools = [
       {
         name: "get_metadata_objects",
         description: "List active object metadata from the local schema export (API fallback)",
@@ -487,6 +547,48 @@ export class TwentyCRMServer {
         }
       }
     ];
+
+    const noteSchema = this.objectSchemas.get('notes');
+    const noteTargetSchema = this.objectSchemas.get('notetargets');
+    if (noteSchema && noteTargetSchema) {
+      const noteInputSchema = {
+        type: "object",
+        description: noteSchema.description || "Fields applied to the created note",
+        properties: cloneSchema(noteSchema.properties) || {},
+        required: noteSchema.required?.slice() || [],
+        additionalProperties: true
+      };
+
+      tools.push({
+        name: "create_note_for_person",
+        description: "Create a note and link it to a person (optionally additional targets)",
+        inputSchema: {
+          type: "object",
+          properties: {
+            personId: { type: "string", description: "Person ID that receives the note" },
+            note: noteInputSchema,
+            companyId: { type: "string", description: "Optional company ID to link" },
+            targets: {
+              type: "array",
+              description: "Additional targets to link (e.g., {\"personId\":\"...\"})",
+              items: {
+                type: "object",
+                properties: {
+                  personId: { type: "string", description: "Person ID" },
+                  companyId: { type: "string", description: "Company ID" },
+                  workspaceMemberId: { type: "string", description: "Workspace member ID" }
+                },
+                additionalProperties: true
+              }
+            }
+          },
+          required: ["personId", "note"],
+          additionalProperties: false
+        }
+      });
+    }
+
+    return tools;
   }
 
   setupToolHandlers() {
@@ -943,6 +1045,19 @@ export class TwentyCRMServer {
         fields: fieldSummaries
       };
 
+      if (schema?.relationMetadata?.length) {
+        payload.relations = schema.relationMetadata.map((relation) => ({
+          name: relation.name,
+          alias: relation.alias,
+          relationType: relation.relationType,
+          targetNamePlural: relation.targetNamePlural,
+          targetNameSingular: relation.targetNameSingular,
+          targetLabelPlural: relation.targetLabelPlural,
+          targetLabelSingular: relation.targetLabelSingular,
+          targetDescription: relation.targetDescription
+        }));
+      }
+
       return this.buildContent(`Metadata for ${metadata.labelSingular || metadata.nameSingular}`, payload);
     }
 
@@ -1008,6 +1123,150 @@ export class TwentyCRMServer {
       : filtered;
 
     return this.buildContent("Available operations", { operations: limited });
+  }
+
+  async createNoteForPerson(params = {}) {
+    const { personId, note, companyId, targets } = params;
+
+    if (!personId) {
+      throw new Error("personId is required");
+    }
+
+    if (!note || typeof note !== "object") {
+      throw new Error("note object is required");
+    }
+
+    const noteSchema = this.objectSchemas.get('notes');
+    if (!noteSchema) {
+      throw new Error("Notes schema unavailable; ensure schema export is loaded");
+    }
+
+    const sanitizedNote = this.sanitizePayload(note, noteSchema);
+    if (Object.keys(sanitizedNote).length === 0) {
+      throw new Error("No note fields provided; specify title, body, or other fields");
+    }
+
+    const noteResponse = await this.makeRequest('/rest/notes', 'POST', sanitizedNote);
+    const noteId = this.extractResourceId(noteResponse);
+    if (!noteId) {
+      throw new Error("Unable to determine created note ID from response");
+    }
+
+    const noteTargetSchema = this.objectSchemas.get('notetargets');
+    if (!noteTargetSchema) {
+      throw new Error("noteTargets schema unavailable; cannot create note links");
+    }
+
+    const targetRequests = this.buildNoteTargetRequests({ noteId, personId, companyId, targets });
+    if (!targetRequests.length) {
+      throw new Error("No note targets resolved; provide at least one person/company to link");
+    }
+
+    const createdTargets = [];
+    for (const request of targetRequests) {
+      const sanitizedTarget = this.sanitizePayload(request, noteTargetSchema);
+      const targetResponse = await this.makeRequest('/rest/noteTargets', 'POST', sanitizedTarget);
+      createdTargets.push({
+        payload: sanitizedTarget,
+        id: this.extractResourceId(targetResponse)
+      });
+    }
+
+    return this.buildContent(
+      `Created note ${noteId} and linked ${createdTargets.length} target(s)`,
+      {
+        noteId,
+        createdTargets: createdTargets.map(target => target.id || target.payload)
+      }
+    );
+  }
+
+  buildNoteTargetRequests({ noteId, personId, companyId, targets }) {
+    const requests = [];
+    const dedupe = new Set();
+
+    const addRequest = (request) => {
+      const normalized = Object.keys(request)
+        .sort()
+        .map(key => `${key}:${request[key]}`)
+        .join('|');
+      if (!normalized || dedupe.has(normalized)) {
+        return;
+      }
+      dedupe.add(normalized);
+      requests.push(request);
+    };
+
+    addRequest({ noteId, personId });
+
+    if (companyId) {
+      addRequest({ noteId, companyId });
+    }
+
+    if (Array.isArray(targets)) {
+      targets.forEach(target => {
+        if (!target || typeof target !== "object") {
+          return;
+        }
+
+        const request = { noteId };
+        if (target.personId) {
+          request.personId = target.personId;
+        }
+        if (target.companyId) {
+          request.companyId = target.companyId;
+        }
+        if (target.workspaceMemberId) {
+          request.workspaceMemberId = target.workspaceMemberId;
+        }
+
+        if (Object.keys(request).length > 1) {
+          addRequest(request);
+        }
+      });
+    }
+
+    return requests;
+  }
+
+  extractResourceId(response) {
+    if (response === null || response === undefined) {
+      return null;
+    }
+
+    if (typeof response === "string") {
+      return response;
+    }
+
+    if (typeof response === "number") {
+      return String(response);
+    }
+
+    if (Array.isArray(response)) {
+      for (const item of response) {
+        const id = this.extractResourceId(item);
+        if (id) return id;
+      }
+      return null;
+    }
+
+    if (typeof response === "object") {
+      if (response.id) {
+        return typeof response.id === 'string' ? response.id : String(response.id);
+      }
+
+      if (response.data !== undefined) {
+        const nested = this.extractResourceId(response.data);
+        if (nested) return nested;
+      }
+
+      if (response.record !== undefined) {
+        const nested = this.extractResourceId(response.record);
+        if (nested) return nested;
+      }
+    }
+
+    return null;
   }
 
   getDefaultSearchObjects() {
@@ -1254,6 +1513,34 @@ export class TwentyCRMServer {
   }
 }
 
+function parseCliOptions(argv) {
+  const options = { quiet: false };
+
+  const envLevel = process.env.MCP_LOG_LEVEL?.toLowerCase();
+  if (envLevel === 'silent' || envLevel === 'quiet') {
+    options.quiet = true;
+  } else if (envLevel === 'verbose') {
+    options.quiet = false;
+  }
+
+  for (const arg of argv) {
+    if (arg === '--quiet' || arg === '-q') {
+      options.quiet = true;
+    } else if (arg === '--verbose' || arg === '-v') {
+      options.quiet = false;
+    } else if (arg.startsWith('--log-level=')) {
+      const level = arg.split('=')[1]?.toLowerCase();
+      if (level === 'silent' || level === 'quiet') {
+        options.quiet = true;
+      } else if (level === 'verbose') {
+        options.quiet = false;
+      }
+    }
+  }
+
+  return options;
+}
+
 const isCliEntrypoint = (() => {
   try {
     return process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1];
@@ -1263,6 +1550,7 @@ const isCliEntrypoint = (() => {
 })();
 
 if (isCliEntrypoint) {
-  const server = new TwentyCRMServer();
+  const cliOptions = parseCliOptions(process.argv.slice(2));
+  const server = new TwentyCRMServer(cliOptions);
   server.run().catch(console.error);
 }

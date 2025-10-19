@@ -121,6 +121,10 @@ claude mcp add-json "twenty-crm" '{"command":"node","args":["/path/to/twenty-crm
 
 Refer to the [official Claude Code MCP docs](https://modelcontextprotocol.io/) for detailed setup instructions.
 
+### Logging
+
+Use `node index.js --quiet` (or set `MCP_LOG_LEVEL=quiet`) to silence schema reload logs. For extra chatter, pass `--verbose` or set `MCP_LOG_LEVEL=verbose` when debugging.
+
 5. **Restart Claude Desktop** to load the new server.
 
 ---
@@ -157,6 +161,7 @@ Once configured, you can use natural language to interact with your Twenty CRM:
 "Search for any records mentioning 'blockchain'"
 "Find all contacts without LinkedIn profiles"
 "Create a new opportunity called Enterprise Rollout"
+"Create a note for Peter Saxer reminding me to call tomorrow"
 ```
 
 ### 🧭 Schema Utilities
@@ -224,6 +229,14 @@ Tools are generated directly from your exported Twenty schema. Core objects (`pe
 - `update_opportunity` - Update opportunity information
 - `list_opportunities` - List opportunities with filtering
 - `delete_opportunity` - Delete an opportunity
+
+</details>
+
+<details>
+<summary><strong>🧾 Note Utilities</strong></summary>
+
+- `create_note_for_person` - Create a note and link it to a person (optionally additional targets)
+- Standard note + noteTarget CRUD tools are still available via `create_note` and `create_noteTarget`
 
 </details>
 
