@@ -59,6 +59,7 @@ All changes sync immediately with your Twenty CRM instance
 - Graceful fallbacks keep core CRUD tools available even without local schema files
 - Live schema reloads when export files change—no server restart needed
 - Enriched complex field schemas (addresses, currency, full name, relations, etc.) and weighted multi-object search
+- Relation fields now expose friendly aliases (e.g., `companyId`, `noteTargetIds`) so linking records works out of the box
 
 ---
 
