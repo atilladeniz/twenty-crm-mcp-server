@@ -1,0 +1,2654 @@
+{
+  "data": {
+    "__schema": {
+      "queryType": {
+        "fields": [
+          {
+            "name": "object",
+            "description": null
+          },
+          {
+            "name": "objects",
+            "description": null
+          },
+          {
+            "name": "getCoreViews",
+            "description": null
+          },
+          {
+            "name": "getCoreView",
+            "description": null
+          },
+          {
+            "name": "getCoreViewFields",
+            "description": null
+          },
+          {
+            "name": "getCoreViewField",
+            "description": null
+          },
+          {
+            "name": "getCoreViewFilters",
+            "description": null
+          },
+          {
+            "name": "getCoreViewFilter",
+            "description": null
+          },
+          {
+            "name": "getCoreViewFilterGroups",
+            "description": null
+          },
+          {
+            "name": "getCoreViewFilterGroup",
+            "description": null
+          },
+          {
+            "name": "getCoreViewGroups",
+            "description": null
+          },
+          {
+            "name": "getCoreViewGroup",
+            "description": null
+          },
+          {
+            "name": "getCoreViewSorts",
+            "description": null
+          },
+          {
+            "name": "getCoreViewSort",
+            "description": null
+          },
+          {
+            "name": "index",
+            "description": null
+          },
+          {
+            "name": "indexMetadatas",
+            "description": null
+          },
+          {
+            "name": "findOneDatabaseEventTrigger",
+            "description": null
+          },
+          {
+            "name": "findManyDatabaseEventTriggers",
+            "description": null
+          },
+          {
+            "name": "findOneCronTrigger",
+            "description": null
+          },
+          {
+            "name": "findManyCronTriggers",
+            "description": null
+          },
+          {
+            "name": "findOneRouteTrigger",
+            "description": null
+          },
+          {
+            "name": "findManyRouteTriggers",
+            "description": null
+          },
+          {
+            "name": "findOneServerlessFunction",
+            "description": null
+          },
+          {
+            "name": "findManyServerlessFunctions",
+            "description": null
+          },
+          {
+            "name": "getAvailablePackages",
+            "description": null
+          },
+          {
+            "name": "getServerlessFunctionSourceCode",
+            "description": null
+          },
+          {
+            "name": "checkUserExists",
+            "description": null
+          },
+          {
+            "name": "checkWorkspaceInviteHashIsValid",
+            "description": null
+          },
+          {
+            "name": "findWorkspaceFromInviteHash",
+            "description": null
+          },
+          {
+            "name": "validatePasswordResetToken",
+            "description": null
+          },
+          {
+            "name": "apiKeys",
+            "description": null
+          },
+          {
+            "name": "apiKey",
+            "description": null
+          },
+          {
+            "name": "currentUser",
+            "description": null
+          },
+          {
+            "name": "findWorkspaceInvitations",
+            "description": null
+          },
+          {
+            "name": "billingPortalSession",
+            "description": null
+          },
+          {
+            "name": "listPlans",
+            "description": null
+          },
+          {
+            "name": "getMeteredProductsUsage",
+            "description": null
+          },
+          {
+            "name": "getApprovedAccessDomains",
+            "description": null
+          },
+          {
+            "name": "currentWorkspace",
+            "description": null
+          },
+          {
+            "name": "getPublicWorkspaceDataByDomain",
+            "description": null
+          },
+          {
+            "name": "findManyAgents",
+            "description": null
+          },
+          {
+            "name": "findOneAgent",
+            "description": null
+          },
+          {
+            "name": "findAgentHandoffTargets",
+            "description": null
+          },
+          {
+            "name": "findAgentHandoffs",
+            "description": null
+          },
+          {
+            "name": "agentChatThreads",
+            "description": null
+          },
+          {
+            "name": "agentChatThread",
+            "description": null
+          },
+          {
+            "name": "agentChatMessages",
+            "description": null
+          },
+          {
+            "name": "getRoles",
+            "description": null
+          },
+          {
+            "name": "field",
+            "description": null
+          },
+          {
+            "name": "fields",
+            "description": null
+          },
+          {
+            "name": "getSSOIdentityProviders",
+            "description": null
+          },
+          {
+            "name": "getPageLayouts",
+            "description": null
+          },
+          {
+            "name": "getPageLayout",
+            "description": null
+          },
+          {
+            "name": "getPageLayoutTabs",
+            "description": null
+          },
+          {
+            "name": "getPageLayoutTab",
+            "description": null
+          },
+          {
+            "name": "getPageLayoutWidgets",
+            "description": null
+          },
+          {
+            "name": "getPageLayoutWidget",
+            "description": null
+          },
+          {
+            "name": "webhooks",
+            "description": null
+          },
+          {
+            "name": "webhook",
+            "description": null
+          },
+          {
+            "name": "search",
+            "description": null
+          },
+          {
+            "name": "getConnectedImapSmtpCaldavAccount",
+            "description": null
+          },
+          {
+            "name": "getAutoCompleteAddress",
+            "description": null
+          },
+          {
+            "name": "getAddressDetails",
+            "description": null
+          },
+          {
+            "name": "getConfigVariablesGrouped",
+            "description": null
+          },
+          {
+            "name": "getSystemHealthStatus",
+            "description": null
+          },
+          {
+            "name": "getIndicatorHealthStatus",
+            "description": null
+          },
+          {
+            "name": "getQueueMetrics",
+            "description": null
+          },
+          {
+            "name": "versionInfo",
+            "description": null
+          },
+          {
+            "name": "getDatabaseConfigVariable",
+            "description": null
+          },
+          {
+            "name": "getPostgresCredentials",
+            "description": null
+          },
+          {
+            "name": "findManyPublicDomains",
+            "description": null
+          },
+          {
+            "name": "getEmailingDomains",
+            "description": null
+          },
+          {
+            "name": "getTimelineCalendarEventsFromPersonId",
+            "description": null
+          },
+          {
+            "name": "getTimelineCalendarEventsFromCompanyId",
+            "description": null
+          },
+          {
+            "name": "getTimelineCalendarEventsFromOpportunityId",
+            "description": null
+          },
+          {
+            "name": "getTimelineThreadsFromPersonId",
+            "description": null
+          },
+          {
+            "name": "getTimelineThreadsFromCompanyId",
+            "description": null
+          },
+          {
+            "name": "getTimelineThreadsFromOpportunityId",
+            "description": null
+          },
+          {
+            "name": "attachments",
+            "description": null
+          },
+          {
+            "name": "attachment",
+            "description": null
+          },
+          {
+            "name": "companies",
+            "description": null
+          },
+          {
+            "name": "company",
+            "description": null
+          },
+          {
+            "name": "companyDuplicates",
+            "description": null
+          },
+          {
+            "name": "blocklists",
+            "description": null
+          },
+          {
+            "name": "blocklist",
+            "description": null
+          },
+          {
+            "name": "calendarEvents",
+            "description": null
+          },
+          {
+            "name": "calendarEvent",
+            "description": null
+          },
+          {
+            "name": "calendarChannels",
+            "description": null
+          },
+          {
+            "name": "calendarChannel",
+            "description": null
+          },
+          {
+            "name": "calendarChannelEventAssociations",
+            "description": null
+          },
+          {
+            "name": "calendarChannelEventAssociation",
+            "description": null
+          },
+          {
+            "name": "calendarEventParticipants",
+            "description": null
+          },
+          {
+            "name": "calendarEventParticipant",
+            "description": null
+          },
+          {
+            "name": "connectedAccounts",
+            "description": null
+          },
+          {
+            "name": "connectedAccount",
+            "description": null
+          },
+          {
+            "name": "favorites",
+            "description": null
+          },
+          {
+            "name": "favorite",
+            "description": null
+          },
+          {
+            "name": "favoriteFolders",
+            "description": null
+          },
+          {
+            "name": "favoriteFolder",
+            "description": null
+          },
+          {
+            "name": "timelineActivities",
+            "description": null
+          },
+          {
+            "name": "timelineActivity",
+            "description": null
+          },
+          {
+            "name": "viewFields",
+            "description": null
+          },
+          {
+            "name": "viewField",
+            "description": null
+          },
+          {
+            "name": "viewGroups",
+            "description": null
+          },
+          {
+            "name": "viewGroup",
+            "description": null
+          },
+          {
+            "name": "viewFilters",
+            "description": null
+          },
+          {
+            "name": "viewFilter",
+            "description": null
+          },
+          {
+            "name": "viewFilterGroups",
+            "description": null
+          },
+          {
+            "name": "viewFilterGroup",
+            "description": null
+          },
+          {
+            "name": "viewSorts",
+            "description": null
+          },
+          {
+            "name": "viewSort",
+            "description": null
+          },
+          {
+            "name": "views",
+            "description": null
+          },
+          {
+            "name": "view",
+            "description": null
+          },
+          {
+            "name": "workflows",
+            "description": null
+          },
+          {
+            "name": "workflow",
+            "description": null
+          },
+          {
+            "name": "workflowVersions",
+            "description": null
+          },
+          {
+            "name": "workflowVersion",
+            "description": null
+          },
+          {
+            "name": "workflowRuns",
+            "description": null
+          },
+          {
+            "name": "workflowRun",
+            "description": null
+          },
+          {
+            "name": "workflowAutomatedTriggers",
+            "description": null
+          },
+          {
+            "name": "workflowAutomatedTrigger",
+            "description": null
+          },
+          {
+            "name": "workspaceMembers",
+            "description": null
+          },
+          {
+            "name": "workspaceMember",
+            "description": null
+          },
+          {
+            "name": "messageThreads",
+            "description": null
+          },
+          {
+            "name": "messageThread",
+            "description": null
+          },
+          {
+            "name": "messages",
+            "description": null
+          },
+          {
+            "name": "message",
+            "description": null
+          },
+          {
+            "name": "messageChannels",
+            "description": null
+          },
+          {
+            "name": "messageChannel",
+            "description": null
+          },
+          {
+            "name": "messageParticipants",
+            "description": null
+          },
+          {
+            "name": "messageParticipant",
+            "description": null
+          },
+          {
+            "name": "messageFolders",
+            "description": null
+          },
+          {
+            "name": "messageFolder",
+            "description": null
+          },
+          {
+            "name": "messageChannelMessageAssociations",
+            "description": null
+          },
+          {
+            "name": "messageChannelMessageAssociation",
+            "description": null
+          },
+          {
+            "name": "notes",
+            "description": null
+          },
+          {
+            "name": "note",
+            "description": null
+          },
+          {
+            "name": "noteTargets",
+            "description": null
+          },
+          {
+            "name": "noteTarget",
+            "description": null
+          },
+          {
+            "name": "opportunities",
+            "description": null
+          },
+          {
+            "name": "opportunity",
+            "description": null
+          },
+          {
+            "name": "people",
+            "description": null
+          },
+          {
+            "name": "person",
+            "description": null
+          },
+          {
+            "name": "personDuplicates",
+            "description": null
+          },
+          {
+            "name": "tasks",
+            "description": null
+          },
+          {
+            "name": "task",
+            "description": null
+          },
+          {
+            "name": "taskTargets",
+            "description": null
+          },
+          {
+            "name": "taskTarget",
+            "description": null
+          }
+        ]
+      },
+      "mutationType": {
+        "fields": [
+          {
+            "name": "createObjectEvent",
+            "description": null
+          },
+          {
+            "name": "trackAnalytics",
+            "description": null
+          },
+          {
+            "name": "deleteOneObject",
+            "description": null
+          },
+          {
+            "name": "updateOneObject",
+            "description": null
+          },
+          {
+            "name": "createOneObject",
+            "description": null
+          },
+          {
+            "name": "createCoreView",
+            "description": null
+          },
+          {
+            "name": "updateCoreView",
+            "description": null
+          },
+          {
+            "name": "deleteCoreView",
+            "description": null
+          },
+          {
+            "name": "destroyCoreView",
+            "description": null
+          },
+          {
+            "name": "updateCoreViewField",
+            "description": null
+          },
+          {
+            "name": "createCoreViewField",
+            "description": null
+          },
+          {
+            "name": "deleteCoreViewField",
+            "description": null
+          },
+          {
+            "name": "destroyCoreViewField",
+            "description": null
+          },
+          {
+            "name": "createCoreViewFilter",
+            "description": null
+          },
+          {
+            "name": "updateCoreViewFilter",
+            "description": null
+          },
+          {
+            "name": "deleteCoreViewFilter",
+            "description": null
+          },
+          {
+            "name": "destroyCoreViewFilter",
+            "description": null
+          },
+          {
+            "name": "createCoreViewFilterGroup",
+            "description": null
+          },
+          {
+            "name": "updateCoreViewFilterGroup",
+            "description": null
+          },
+          {
+            "name": "deleteCoreViewFilterGroup",
+            "description": null
+          },
+          {
+            "name": "destroyCoreViewFilterGroup",
+            "description": null
+          },
+          {
+            "name": "createCoreViewGroup",
+            "description": null
+          },
+          {
+            "name": "updateCoreViewGroup",
+            "description": null
+          },
+          {
+            "name": "deleteCoreViewGroup",
+            "description": null
+          },
+          {
+            "name": "destroyCoreViewGroup",
+            "description": null
+          },
+          {
+            "name": "createCoreViewSort",
+            "description": null
+          },
+          {
+            "name": "updateCoreViewSort",
+            "description": null
+          },
+          {
+            "name": "deleteCoreViewSort",
+            "description": null
+          },
+          {
+            "name": "destroyCoreViewSort",
+            "description": null
+          },
+          {
+            "name": "deleteOneDatabaseEventTrigger",
+            "description": null
+          },
+          {
+            "name": "updateOneDatabaseEventTrigger",
+            "description": null
+          },
+          {
+            "name": "createOneDatabaseEventTrigger",
+            "description": null
+          },
+          {
+            "name": "deleteOneCronTrigger",
+            "description": null
+          },
+          {
+            "name": "updateOneCronTrigger",
+            "description": null
+          },
+          {
+            "name": "createOneCronTrigger",
+            "description": null
+          },
+          {
+            "name": "deleteOneRouteTrigger",
+            "description": null
+          },
+          {
+            "name": "updateOneRouteTrigger",
+            "description": null
+          },
+          {
+            "name": "createOneRouteTrigger",
+            "description": null
+          },
+          {
+            "name": "deleteOneServerlessFunction",
+            "description": null
+          },
+          {
+            "name": "updateOneServerlessFunction",
+            "description": null
+          },
+          {
+            "name": "createOneServerlessFunction",
+            "description": null
+          },
+          {
+            "name": "executeOneServerlessFunction",
+            "description": null
+          },
+          {
+            "name": "publishServerlessFunction",
+            "description": null
+          },
+          {
+            "name": "createOneServerlessFunctionLayer",
+            "description": null
+          },
+          {
+            "name": "createFile",
+            "description": null
+          },
+          {
+            "name": "deleteFile",
+            "description": null
+          },
+          {
+            "name": "uploadFile",
+            "description": null
+          },
+          {
+            "name": "uploadImage",
+            "description": null
+          },
+          {
+            "name": "getAuthorizationUrlForSSO",
+            "description": null
+          },
+          {
+            "name": "getLoginTokenFromCredentials",
+            "description": null
+          },
+          {
+            "name": "signIn",
+            "description": null
+          },
+          {
+            "name": "getLoginTokenFromEmailVerificationToken",
+            "description": null
+          },
+          {
+            "name": "getWorkspaceAgnosticTokenFromEmailVerificationToken",
+            "description": null
+          },
+          {
+            "name": "getAuthTokensFromOTP",
+            "description": null
+          },
+          {
+            "name": "signUp",
+            "description": null
+          },
+          {
+            "name": "signUpInWorkspace",
+            "description": null
+          },
+          {
+            "name": "signUpInNewWorkspace",
+            "description": null
+          },
+          {
+            "name": "generateTransientToken",
+            "description": null
+          },
+          {
+            "name": "getAuthTokensFromLoginToken",
+            "description": null
+          },
+          {
+            "name": "authorizeApp",
+            "description": null
+          },
+          {
+            "name": "renewToken",
+            "description": null
+          },
+          {
+            "name": "generateApiKeyToken",
+            "description": null
+          },
+          {
+            "name": "emailPasswordResetLink",
+            "description": null
+          },
+          {
+            "name": "updatePasswordViaResetToken",
+            "description": null
+          },
+          {
+            "name": "createApiKey",
+            "description": null
+          },
+          {
+            "name": "updateApiKey",
+            "description": null
+          },
+          {
+            "name": "revokeApiKey",
+            "description": null
+          },
+          {
+            "name": "assignRoleToApiKey",
+            "description": null
+          },
+          {
+            "name": "initiateOTPProvisioning",
+            "description": null
+          },
+          {
+            "name": "initiateOTPProvisioningForAuthenticatedUser",
+            "description": null
+          },
+          {
+            "name": "deleteTwoFactorAuthenticationMethod",
+            "description": null
+          },
+          {
+            "name": "verifyTwoFactorAuthenticationMethodForAuthenticatedUser",
+            "description": null
+          },
+          {
+            "name": "uploadProfilePicture",
+            "description": null
+          },
+          {
+            "name": "deleteUser",
+            "description": null
+          },
+          {
+            "name": "deleteWorkspaceInvitation",
+            "description": null
+          },
+          {
+            "name": "resendWorkspaceInvitation",
+            "description": null
+          },
+          {
+            "name": "sendInvitations",
+            "description": null
+          },
+          {
+            "name": "skipSyncEmailOnboardingStep",
+            "description": null
+          },
+          {
+            "name": "skipBookOnboardingStep",
+            "description": null
+          },
+          {
+            "name": "checkoutSession",
+            "description": null
+          },
+          {
+            "name": "switchSubscriptionInterval",
+            "description": null
+          },
+          {
+            "name": "switchBillingPlan",
+            "description": null
+          },
+          {
+            "name": "cancelSwitchBillingPlan",
+            "description": null
+          },
+          {
+            "name": "cancelSwitchBillingInterval",
+            "description": null
+          },
+          {
+            "name": "setMeteredSubscriptionPrice",
+            "description": null
+          },
+          {
+            "name": "endSubscriptionTrialPeriod",
+            "description": null
+          },
+          {
+            "name": "cancelSwitchMeteredPrice",
+            "description": null
+          },
+          {
+            "name": "createApprovedAccessDomain",
+            "description": null
+          },
+          {
+            "name": "deleteApprovedAccessDomain",
+            "description": null
+          },
+          {
+            "name": "validateApprovedAccessDomain",
+            "description": null
+          },
+          {
+            "name": "activateWorkspace",
+            "description": null
+          },
+          {
+            "name": "updateWorkspace",
+            "description": null
+          },
+          {
+            "name": "uploadWorkspaceLogo",
+            "description": null
+          },
+          {
+            "name": "deleteCurrentWorkspace",
+            "description": null
+          },
+          {
+            "name": "checkCustomDomainValidRecords",
+            "description": null
+          },
+          {
+            "name": "createOneAgent",
+            "description": null
+          },
+          {
+            "name": "updateOneAgent",
+            "description": null
+          },
+          {
+            "name": "deleteOneAgent",
+            "description": null
+          },
+          {
+            "name": "createAgentHandoff",
+            "description": null
+          },
+          {
+            "name": "removeAgentHandoff",
+            "description": null
+          },
+          {
+            "name": "createAgentChatThread",
+            "description": null
+          },
+          {
+            "name": "updateWorkspaceMemberRole",
+            "description": null
+          },
+          {
+            "name": "createOneRole",
+            "description": null
+          },
+          {
+            "name": "updateOneRole",
+            "description": null
+          },
+          {
+            "name": "deleteOneRole",
+            "description": null
+          },
+          {
+            "name": "upsertObjectPermissions",
+            "description": null
+          },
+          {
+            "name": "upsertPermissionFlags",
+            "description": null
+          },
+          {
+            "name": "upsertFieldPermissions",
+            "description": null
+          },
+          {
+            "name": "assignRoleToAgent",
+            "description": null
+          },
+          {
+            "name": "removeRoleFromAgent",
+            "description": null
+          },
+          {
+            "name": "createOneField",
+            "description": null
+          },
+          {
+            "name": "updateOneField",
+            "description": null
+          },
+          {
+            "name": "deleteOneField",
+            "description": null
+          },
+          {
+            "name": "resendEmailVerificationToken",
+            "description": null
+          },
+          {
+            "name": "createOIDCIdentityProvider",
+            "description": null
+          },
+          {
+            "name": "createSAMLIdentityProvider",
+            "description": null
+          },
+          {
+            "name": "deleteSSOIdentityProvider",
+            "description": null
+          },
+          {
+            "name": "editSSOIdentityProvider",
+            "description": null
+          },
+          {
+            "name": "impersonate",
+            "description": null
+          },
+          {
+            "name": "createPageLayout",
+            "description": null
+          },
+          {
+            "name": "updatePageLayout",
+            "description": null
+          },
+          {
+            "name": "deletePageLayout",
+            "description": null
+          },
+          {
+            "name": "destroyPageLayout",
+            "description": null
+          },
+          {
+            "name": "restorePageLayout",
+            "description": null
+          },
+          {
+            "name": "updatePageLayoutWithTabsAndWidgets",
+            "description": null
+          },
+          {
+            "name": "createPageLayoutTab",
+            "description": null
+          },
+          {
+            "name": "updatePageLayoutTab",
+            "description": null
+          },
+          {
+            "name": "deletePageLayoutTab",
+            "description": null
+          },
+          {
+            "name": "destroyPageLayoutTab",
+            "description": null
+          },
+          {
+            "name": "restorePageLayoutTab",
+            "description": null
+          },
+          {
+            "name": "createPageLayoutWidget",
+            "description": null
+          },
+          {
+            "name": "updatePageLayoutWidget",
+            "description": null
+          },
+          {
+            "name": "deletePageLayoutWidget",
+            "description": null
+          },
+          {
+            "name": "destroyPageLayoutWidget",
+            "description": null
+          },
+          {
+            "name": "restorePageLayoutWidget",
+            "description": null
+          },
+          {
+            "name": "createWebhook",
+            "description": null
+          },
+          {
+            "name": "updateWebhook",
+            "description": null
+          },
+          {
+            "name": "deleteWebhook",
+            "description": null
+          },
+          {
+            "name": "saveImapSmtpCaldavAccount",
+            "description": null
+          },
+          {
+            "name": "updateLabPublicFeatureFlag",
+            "description": null
+          },
+          {
+            "name": "userLookupAdminPanel",
+            "description": null
+          },
+          {
+            "name": "updateWorkspaceFeatureFlag",
+            "description": null
+          },
+          {
+            "name": "createDatabaseConfigVariable",
+            "description": null
+          },
+          {
+            "name": "updateDatabaseConfigVariable",
+            "description": null
+          },
+          {
+            "name": "deleteDatabaseConfigVariable",
+            "description": null
+          },
+          {
+            "name": "activateWorkflowVersion",
+            "description": null
+          },
+          {
+            "name": "deactivateWorkflowVersion",
+            "description": null
+          },
+          {
+            "name": "runWorkflowVersion",
+            "description": null
+          },
+          {
+            "name": "computeStepOutputSchema",
+            "description": null
+          },
+          {
+            "name": "createWorkflowVersionStep",
+            "description": null
+          },
+          {
+            "name": "updateWorkflowVersionStep",
+            "description": null
+          },
+          {
+            "name": "deleteWorkflowVersionStep",
+            "description": null
+          },
+          {
+            "name": "submitFormStep",
+            "description": null
+          },
+          {
+            "name": "updateWorkflowRunStep",
+            "description": null
+          },
+          {
+            "name": "duplicateWorkflowVersionStep",
+            "description": null
+          },
+          {
+            "name": "createWorkflowVersionEdge",
+            "description": null
+          },
+          {
+            "name": "deleteWorkflowVersionEdge",
+            "description": null
+          },
+          {
+            "name": "createDraftFromWorkflowVersion",
+            "description": null
+          },
+          {
+            "name": "updateWorkflowVersionPositions",
+            "description": null
+          },
+          {
+            "name": "enablePostgresProxy",
+            "description": null
+          },
+          {
+            "name": "disablePostgresProxy",
+            "description": null
+          },
+          {
+            "name": "createPublicDomain",
+            "description": null
+          },
+          {
+            "name": "deletePublicDomain",
+            "description": null
+          },
+          {
+            "name": "checkPublicDomainValidRecords",
+            "description": null
+          },
+          {
+            "name": "createEmailingDomain",
+            "description": null
+          },
+          {
+            "name": "deleteEmailingDomain",
+            "description": null
+          },
+          {
+            "name": "verifyEmailingDomain",
+            "description": null
+          },
+          {
+            "name": "createOneAppToken",
+            "description": null
+          },
+          {
+            "name": "syncApplication",
+            "description": null
+          },
+          {
+            "name": "deleteApplication",
+            "description": null
+          },
+          {
+            "name": "createAttachments",
+            "description": null
+          },
+          {
+            "name": "createAttachment",
+            "description": null
+          },
+          {
+            "name": "updateAttachment",
+            "description": null
+          },
+          {
+            "name": "deleteAttachment",
+            "description": null
+          },
+          {
+            "name": "updateAttachments",
+            "description": null
+          },
+          {
+            "name": "deleteAttachments",
+            "description": null
+          },
+          {
+            "name": "destroyAttachment",
+            "description": null
+          },
+          {
+            "name": "destroyAttachments",
+            "description": null
+          },
+          {
+            "name": "restoreAttachment",
+            "description": null
+          },
+          {
+            "name": "restoreAttachments",
+            "description": null
+          },
+          {
+            "name": "createCompanies",
+            "description": null
+          },
+          {
+            "name": "createCompany",
+            "description": null
+          },
+          {
+            "name": "updateCompany",
+            "description": null
+          },
+          {
+            "name": "deleteCompany",
+            "description": null
+          },
+          {
+            "name": "updateCompanies",
+            "description": null
+          },
+          {
+            "name": "deleteCompanies",
+            "description": null
+          },
+          {
+            "name": "destroyCompany",
+            "description": null
+          },
+          {
+            "name": "destroyCompanies",
+            "description": null
+          },
+          {
+            "name": "restoreCompany",
+            "description": null
+          },
+          {
+            "name": "restoreCompanies",
+            "description": null
+          },
+          {
+            "name": "mergeCompanies",
+            "description": null
+          },
+          {
+            "name": "createBlocklists",
+            "description": null
+          },
+          {
+            "name": "createBlocklist",
+            "description": null
+          },
+          {
+            "name": "updateBlocklist",
+            "description": null
+          },
+          {
+            "name": "deleteBlocklist",
+            "description": null
+          },
+          {
+            "name": "updateBlocklists",
+            "description": null
+          },
+          {
+            "name": "deleteBlocklists",
+            "description": null
+          },
+          {
+            "name": "destroyBlocklist",
+            "description": null
+          },
+          {
+            "name": "destroyBlocklists",
+            "description": null
+          },
+          {
+            "name": "restoreBlocklist",
+            "description": null
+          },
+          {
+            "name": "restoreBlocklists",
+            "description": null
+          },
+          {
+            "name": "createCalendarEvents",
+            "description": null
+          },
+          {
+            "name": "createCalendarEvent",
+            "description": null
+          },
+          {
+            "name": "updateCalendarEvent",
+            "description": null
+          },
+          {
+            "name": "deleteCalendarEvent",
+            "description": null
+          },
+          {
+            "name": "updateCalendarEvents",
+            "description": null
+          },
+          {
+            "name": "deleteCalendarEvents",
+            "description": null
+          },
+          {
+            "name": "destroyCalendarEvent",
+            "description": null
+          },
+          {
+            "name": "destroyCalendarEvents",
+            "description": null
+          },
+          {
+            "name": "restoreCalendarEvent",
+            "description": null
+          },
+          {
+            "name": "restoreCalendarEvents",
+            "description": null
+          },
+          {
+            "name": "createCalendarChannels",
+            "description": null
+          },
+          {
+            "name": "createCalendarChannel",
+            "description": null
+          },
+          {
+            "name": "updateCalendarChannel",
+            "description": null
+          },
+          {
+            "name": "deleteCalendarChannel",
+            "description": null
+          },
+          {
+            "name": "updateCalendarChannels",
+            "description": null
+          },
+          {
+            "name": "deleteCalendarChannels",
+            "description": null
+          },
+          {
+            "name": "destroyCalendarChannel",
+            "description": null
+          },
+          {
+            "name": "destroyCalendarChannels",
+            "description": null
+          },
+          {
+            "name": "restoreCalendarChannel",
+            "description": null
+          },
+          {
+            "name": "restoreCalendarChannels",
+            "description": null
+          },
+          {
+            "name": "createCalendarChannelEventAssociations",
+            "description": null
+          },
+          {
+            "name": "createCalendarChannelEventAssociation",
+            "description": null
+          },
+          {
+            "name": "updateCalendarChannelEventAssociation",
+            "description": null
+          },
+          {
+            "name": "deleteCalendarChannelEventAssociation",
+            "description": null
+          },
+          {
+            "name": "updateCalendarChannelEventAssociations",
+            "description": null
+          },
+          {
+            "name": "deleteCalendarChannelEventAssociations",
+            "description": null
+          },
+          {
+            "name": "destroyCalendarChannelEventAssociation",
+            "description": null
+          },
+          {
+            "name": "destroyCalendarChannelEventAssociations",
+            "description": null
+          },
+          {
+            "name": "restoreCalendarChannelEventAssociation",
+            "description": null
+          },
+          {
+            "name": "restoreCalendarChannelEventAssociations",
+            "description": null
+          },
+          {
+            "name": "createCalendarEventParticipants",
+            "description": null
+          },
+          {
+            "name": "createCalendarEventParticipant",
+            "description": null
+          },
+          {
+            "name": "updateCalendarEventParticipant",
+            "description": null
+          },
+          {
+            "name": "deleteCalendarEventParticipant",
+            "description": null
+          },
+          {
+            "name": "updateCalendarEventParticipants",
+            "description": null
+          },
+          {
+            "name": "deleteCalendarEventParticipants",
+            "description": null
+          },
+          {
+            "name": "destroyCalendarEventParticipant",
+            "description": null
+          },
+          {
+            "name": "destroyCalendarEventParticipants",
+            "description": null
+          },
+          {
+            "name": "restoreCalendarEventParticipant",
+            "description": null
+          },
+          {
+            "name": "restoreCalendarEventParticipants",
+            "description": null
+          },
+          {
+            "name": "createConnectedAccounts",
+            "description": null
+          },
+          {
+            "name": "createConnectedAccount",
+            "description": null
+          },
+          {
+            "name": "updateConnectedAccount",
+            "description": null
+          },
+          {
+            "name": "deleteConnectedAccount",
+            "description": null
+          },
+          {
+            "name": "updateConnectedAccounts",
+            "description": null
+          },
+          {
+            "name": "deleteConnectedAccounts",
+            "description": null
+          },
+          {
+            "name": "destroyConnectedAccount",
+            "description": null
+          },
+          {
+            "name": "destroyConnectedAccounts",
+            "description": null
+          },
+          {
+            "name": "restoreConnectedAccount",
+            "description": null
+          },
+          {
+            "name": "restoreConnectedAccounts",
+            "description": null
+          },
+          {
+            "name": "createFavorites",
+            "description": null
+          },
+          {
+            "name": "createFavorite",
+            "description": null
+          },
+          {
+            "name": "updateFavorite",
+            "description": null
+          },
+          {
+            "name": "deleteFavorite",
+            "description": null
+          },
+          {
+            "name": "updateFavorites",
+            "description": null
+          },
+          {
+            "name": "deleteFavorites",
+            "description": null
+          },
+          {
+            "name": "destroyFavorite",
+            "description": null
+          },
+          {
+            "name": "destroyFavorites",
+            "description": null
+          },
+          {
+            "name": "restoreFavorite",
+            "description": null
+          },
+          {
+            "name": "restoreFavorites",
+            "description": null
+          },
+          {
+            "name": "createFavoriteFolders",
+            "description": null
+          },
+          {
+            "name": "createFavoriteFolder",
+            "description": null
+          },
+          {
+            "name": "updateFavoriteFolder",
+            "description": null
+          },
+          {
+            "name": "deleteFavoriteFolder",
+            "description": null
+          },
+          {
+            "name": "updateFavoriteFolders",
+            "description": null
+          },
+          {
+            "name": "deleteFavoriteFolders",
+            "description": null
+          },
+          {
+            "name": "destroyFavoriteFolder",
+            "description": null
+          },
+          {
+            "name": "destroyFavoriteFolders",
+            "description": null
+          },
+          {
+            "name": "restoreFavoriteFolder",
+            "description": null
+          },
+          {
+            "name": "restoreFavoriteFolders",
+            "description": null
+          },
+          {
+            "name": "createTimelineActivities",
+            "description": null
+          },
+          {
+            "name": "createTimelineActivity",
+            "description": null
+          },
+          {
+            "name": "updateTimelineActivity",
+            "description": null
+          },
+          {
+            "name": "deleteTimelineActivity",
+            "description": null
+          },
+          {
+            "name": "updateTimelineActivities",
+            "description": null
+          },
+          {
+            "name": "deleteTimelineActivities",
+            "description": null
+          },
+          {
+            "name": "destroyTimelineActivity",
+            "description": null
+          },
+          {
+            "name": "destroyTimelineActivities",
+            "description": null
+          },
+          {
+            "name": "restoreTimelineActivity",
+            "description": null
+          },
+          {
+            "name": "restoreTimelineActivities",
+            "description": null
+          },
+          {
+            "name": "createViewFields",
+            "description": null
+          },
+          {
+            "name": "createViewField",
+            "description": null
+          },
+          {
+            "name": "updateViewField",
+            "description": null
+          },
+          {
+            "name": "deleteViewField",
+            "description": null
+          },
+          {
+            "name": "updateViewFields",
+            "description": null
+          },
+          {
+            "name": "deleteViewFields",
+            "description": null
+          },
+          {
+            "name": "destroyViewField",
+            "description": null
+          },
+          {
+            "name": "destroyViewFields",
+            "description": null
+          },
+          {
+            "name": "restoreViewField",
+            "description": null
+          },
+          {
+            "name": "restoreViewFields",
+            "description": null
+          },
+          {
+            "name": "createViewGroups",
+            "description": null
+          },
+          {
+            "name": "createViewGroup",
+            "description": null
+          },
+          {
+            "name": "updateViewGroup",
+            "description": null
+          },
+          {
+            "name": "deleteViewGroup",
+            "description": null
+          },
+          {
+            "name": "updateViewGroups",
+            "description": null
+          },
+          {
+            "name": "deleteViewGroups",
+            "description": null
+          },
+          {
+            "name": "destroyViewGroup",
+            "description": null
+          },
+          {
+            "name": "destroyViewGroups",
+            "description": null
+          },
+          {
+            "name": "restoreViewGroup",
+            "description": null
+          },
+          {
+            "name": "restoreViewGroups",
+            "description": null
+          },
+          {
+            "name": "createViewFilters",
+            "description": null
+          },
+          {
+            "name": "createViewFilter",
+            "description": null
+          },
+          {
+            "name": "updateViewFilter",
+            "description": null
+          },
+          {
+            "name": "deleteViewFilter",
+            "description": null
+          },
+          {
+            "name": "updateViewFilters",
+            "description": null
+          },
+          {
+            "name": "deleteViewFilters",
+            "description": null
+          },
+          {
+            "name": "destroyViewFilter",
+            "description": null
+          },
+          {
+            "name": "destroyViewFilters",
+            "description": null
+          },
+          {
+            "name": "restoreViewFilter",
+            "description": null
+          },
+          {
+            "name": "restoreViewFilters",
+            "description": null
+          },
+          {
+            "name": "createViewFilterGroups",
+            "description": null
+          },
+          {
+            "name": "createViewFilterGroup",
+            "description": null
+          },
+          {
+            "name": "updateViewFilterGroup",
+            "description": null
+          },
+          {
+            "name": "deleteViewFilterGroup",
+            "description": null
+          },
+          {
+            "name": "updateViewFilterGroups",
+            "description": null
+          },
+          {
+            "name": "deleteViewFilterGroups",
+            "description": null
+          },
+          {
+            "name": "destroyViewFilterGroup",
+            "description": null
+          },
+          {
+            "name": "destroyViewFilterGroups",
+            "description": null
+          },
+          {
+            "name": "restoreViewFilterGroup",
+            "description": null
+          },
+          {
+            "name": "restoreViewFilterGroups",
+            "description": null
+          },
+          {
+            "name": "createViewSorts",
+            "description": null
+          },
+          {
+            "name": "createViewSort",
+            "description": null
+          },
+          {
+            "name": "updateViewSort",
+            "description": null
+          },
+          {
+            "name": "deleteViewSort",
+            "description": null
+          },
+          {
+            "name": "updateViewSorts",
+            "description": null
+          },
+          {
+            "name": "deleteViewSorts",
+            "description": null
+          },
+          {
+            "name": "destroyViewSort",
+            "description": null
+          },
+          {
+            "name": "destroyViewSorts",
+            "description": null
+          },
+          {
+            "name": "restoreViewSort",
+            "description": null
+          },
+          {
+            "name": "restoreViewSorts",
+            "description": null
+          },
+          {
+            "name": "createViews",
+            "description": null
+          },
+          {
+            "name": "createView",
+            "description": null
+          },
+          {
+            "name": "updateView",
+            "description": null
+          },
+          {
+            "name": "deleteView",
+            "description": null
+          },
+          {
+            "name": "updateViews",
+            "description": null
+          },
+          {
+            "name": "deleteViews",
+            "description": null
+          },
+          {
+            "name": "destroyView",
+            "description": null
+          },
+          {
+            "name": "destroyViews",
+            "description": null
+          },
+          {
+            "name": "restoreView",
+            "description": null
+          },
+          {
+            "name": "restoreViews",
+            "description": null
+          },
+          {
+            "name": "createWorkflows",
+            "description": null
+          },
+          {
+            "name": "createWorkflow",
+            "description": null
+          },
+          {
+            "name": "updateWorkflow",
+            "description": null
+          },
+          {
+            "name": "deleteWorkflow",
+            "description": null
+          },
+          {
+            "name": "updateWorkflows",
+            "description": null
+          },
+          {
+            "name": "deleteWorkflows",
+            "description": null
+          },
+          {
+            "name": "destroyWorkflow",
+            "description": null
+          },
+          {
+            "name": "destroyWorkflows",
+            "description": null
+          },
+          {
+            "name": "restoreWorkflow",
+            "description": null
+          },
+          {
+            "name": "restoreWorkflows",
+            "description": null
+          },
+          {
+            "name": "createWorkflowVersions",
+            "description": null
+          },
+          {
+            "name": "createWorkflowVersion",
+            "description": null
+          },
+          {
+            "name": "updateWorkflowVersion",
+            "description": null
+          },
+          {
+            "name": "deleteWorkflowVersion",
+            "description": null
+          },
+          {
+            "name": "updateWorkflowVersions",
+            "description": null
+          },
+          {
+            "name": "deleteWorkflowVersions",
+            "description": null
+          },
+          {
+            "name": "destroyWorkflowVersion",
+            "description": null
+          },
+          {
+            "name": "destroyWorkflowVersions",
+            "description": null
+          },
+          {
+            "name": "restoreWorkflowVersion",
+            "description": null
+          },
+          {
+            "name": "restoreWorkflowVersions",
+            "description": null
+          },
+          {
+            "name": "createWorkflowRuns",
+            "description": null
+          },
+          {
+            "name": "createWorkflowRun",
+            "description": null
+          },
+          {
+            "name": "updateWorkflowRun",
+            "description": null
+          },
+          {
+            "name": "deleteWorkflowRun",
+            "description": null
+          },
+          {
+            "name": "updateWorkflowRuns",
+            "description": null
+          },
+          {
+            "name": "deleteWorkflowRuns",
+            "description": null
+          },
+          {
+            "name": "destroyWorkflowRun",
+            "description": null
+          },
+          {
+            "name": "destroyWorkflowRuns",
+            "description": null
+          },
+          {
+            "name": "restoreWorkflowRun",
+            "description": null
+          },
+          {
+            "name": "restoreWorkflowRuns",
+            "description": null
+          },
+          {
+            "name": "createWorkflowAutomatedTriggers",
+            "description": null
+          },
+          {
+            "name": "createWorkflowAutomatedTrigger",
+            "description": null
+          },
+          {
+            "name": "updateWorkflowAutomatedTrigger",
+            "description": null
+          },
+          {
+            "name": "deleteWorkflowAutomatedTrigger",
+            "description": null
+          },
+          {
+            "name": "updateWorkflowAutomatedTriggers",
+            "description": null
+          },
+          {
+            "name": "deleteWorkflowAutomatedTriggers",
+            "description": null
+          },
+          {
+            "name": "destroyWorkflowAutomatedTrigger",
+            "description": null
+          },
+          {
+            "name": "destroyWorkflowAutomatedTriggers",
+            "description": null
+          },
+          {
+            "name": "restoreWorkflowAutomatedTrigger",
+            "description": null
+          },
+          {
+            "name": "restoreWorkflowAutomatedTriggers",
+            "description": null
+          },
+          {
+            "name": "createWorkspaceMembers",
+            "description": null
+          },
+          {
+            "name": "createWorkspaceMember",
+            "description": null
+          },
+          {
+            "name": "updateWorkspaceMember",
+            "description": null
+          },
+          {
+            "name": "deleteWorkspaceMember",
+            "description": null
+          },
+          {
+            "name": "updateWorkspaceMembers",
+            "description": null
+          },
+          {
+            "name": "deleteWorkspaceMembers",
+            "description": null
+          },
+          {
+            "name": "destroyWorkspaceMember",
+            "description": null
+          },
+          {
+            "name": "destroyWorkspaceMembers",
+            "description": null
+          },
+          {
+            "name": "restoreWorkspaceMember",
+            "description": null
+          },
+          {
+            "name": "restoreWorkspaceMembers",
+            "description": null
+          },
+          {
+            "name": "createMessageThreads",
+            "description": null
+          },
+          {
+            "name": "createMessageThread",
+            "description": null
+          },
+          {
+            "name": "updateMessageThread",
+            "description": null
+          },
+          {
+            "name": "deleteMessageThread",
+            "description": null
+          },
+          {
+            "name": "updateMessageThreads",
+            "description": null
+          },
+          {
+            "name": "deleteMessageThreads",
+            "description": null
+          },
+          {
+            "name": "destroyMessageThread",
+            "description": null
+          },
+          {
+            "name": "destroyMessageThreads",
+            "description": null
+          },
+          {
+            "name": "restoreMessageThread",
+            "description": null
+          },
+          {
+            "name": "restoreMessageThreads",
+            "description": null
+          },
+          {
+            "name": "createMessages",
+            "description": null
+          },
+          {
+            "name": "createMessage",
+            "description": null
+          },
+          {
+            "name": "updateMessage",
+            "description": null
+          },
+          {
+            "name": "deleteMessage",
+            "description": null
+          },
+          {
+            "name": "updateMessages",
+            "description": null
+          },
+          {
+            "name": "deleteMessages",
+            "description": null
+          },
+          {
+            "name": "destroyMessage",
+            "description": null
+          },
+          {
+            "name": "destroyMessages",
+            "description": null
+          },
+          {
+            "name": "restoreMessage",
+            "description": null
+          },
+          {
+            "name": "restoreMessages",
+            "description": null
+          },
+          {
+            "name": "createMessageChannels",
+            "description": null
+          },
+          {
+            "name": "createMessageChannel",
+            "description": null
+          },
+          {
+            "name": "updateMessageChannel",
+            "description": null
+          },
+          {
+            "name": "deleteMessageChannel",
+            "description": null
+          },
+          {
+            "name": "updateMessageChannels",
+            "description": null
+          },
+          {
+            "name": "deleteMessageChannels",
+            "description": null
+          },
+          {
+            "name": "destroyMessageChannel",
+            "description": null
+          },
+          {
+            "name": "destroyMessageChannels",
+            "description": null
+          },
+          {
+            "name": "restoreMessageChannel",
+            "description": null
+          },
+          {
+            "name": "restoreMessageChannels",
+            "description": null
+          },
+          {
+            "name": "createMessageParticipants",
+            "description": null
+          },
+          {
+            "name": "createMessageParticipant",
+            "description": null
+          },
+          {
+            "name": "updateMessageParticipant",
+            "description": null
+          },
+          {
+            "name": "deleteMessageParticipant",
+            "description": null
+          },
+          {
+            "name": "updateMessageParticipants",
+            "description": null
+          },
+          {
+            "name": "deleteMessageParticipants",
+            "description": null
+          },
+          {
+            "name": "destroyMessageParticipant",
+            "description": null
+          },
+          {
+            "name": "destroyMessageParticipants",
+            "description": null
+          },
+          {
+            "name": "restoreMessageParticipant",
+            "description": null
+          },
+          {
+            "name": "restoreMessageParticipants",
+            "description": null
+          },
+          {
+            "name": "createMessageFolders",
+            "description": null
+          },
+          {
+            "name": "createMessageFolder",
+            "description": null
+          },
+          {
+            "name": "updateMessageFolder",
+            "description": null
+          },
+          {
+            "name": "deleteMessageFolder",
+            "description": null
+          },
+          {
+            "name": "updateMessageFolders",
+            "description": null
+          },
+          {
+            "name": "deleteMessageFolders",
+            "description": null
+          },
+          {
+            "name": "destroyMessageFolder",
+            "description": null
+          },
+          {
+            "name": "destroyMessageFolders",
+            "description": null
+          },
+          {
+            "name": "restoreMessageFolder",
+            "description": null
+          },
+          {
+            "name": "restoreMessageFolders",
+            "description": null
+          },
+          {
+            "name": "createMessageChannelMessageAssociations",
+            "description": null
+          },
+          {
+            "name": "createMessageChannelMessageAssociation",
+            "description": null
+          },
+          {
+            "name": "updateMessageChannelMessageAssociation",
+            "description": null
+          },
+          {
+            "name": "deleteMessageChannelMessageAssociation",
+            "description": null
+          },
+          {
+            "name": "updateMessageChannelMessageAssociations",
+            "description": null
+          },
+          {
+            "name": "deleteMessageChannelMessageAssociations",
+            "description": null
+          },
+          {
+            "name": "destroyMessageChannelMessageAssociation",
+            "description": null
+          },
+          {
+            "name": "destroyMessageChannelMessageAssociations",
+            "description": null
+          },
+          {
+            "name": "restoreMessageChannelMessageAssociation",
+            "description": null
+          },
+          {
+            "name": "restoreMessageChannelMessageAssociations",
+            "description": null
+          },
+          {
+            "name": "createNotes",
+            "description": null
+          },
+          {
+            "name": "createNote",
+            "description": null
+          },
+          {
+            "name": "updateNote",
+            "description": null
+          },
+          {
+            "name": "deleteNote",
+            "description": null
+          },
+          {
+            "name": "updateNotes",
+            "description": null
+          },
+          {
+            "name": "deleteNotes",
+            "description": null
+          },
+          {
+            "name": "destroyNote",
+            "description": null
+          },
+          {
+            "name": "destroyNotes",
+            "description": null
+          },
+          {
+            "name": "restoreNote",
+            "description": null
+          },
+          {
+            "name": "restoreNotes",
+            "description": null
+          },
+          {
+            "name": "createNoteTargets",
+            "description": null
+          },
+          {
+            "name": "createNoteTarget",
+            "description": null
+          },
+          {
+            "name": "updateNoteTarget",
+            "description": null
+          },
+          {
+            "name": "deleteNoteTarget",
+            "description": null
+          },
+          {
+            "name": "updateNoteTargets",
+            "description": null
+          },
+          {
+            "name": "deleteNoteTargets",
+            "description": null
+          },
+          {
+            "name": "destroyNoteTarget",
+            "description": null
+          },
+          {
+            "name": "destroyNoteTargets",
+            "description": null
+          },
+          {
+            "name": "restoreNoteTarget",
+            "description": null
+          },
+          {
+            "name": "restoreNoteTargets",
+            "description": null
+          },
+          {
+            "name": "createOpportunities",
+            "description": null
+          },
+          {
+            "name": "createOpportunity",
+            "description": null
+          },
+          {
+            "name": "updateOpportunity",
+            "description": null
+          },
+          {
+            "name": "deleteOpportunity",
+            "description": null
+          },
+          {
+            "name": "updateOpportunities",
+            "description": null
+          },
+          {
+            "name": "deleteOpportunities",
+            "description": null
+          },
+          {
+            "name": "destroyOpportunity",
+            "description": null
+          },
+          {
+            "name": "destroyOpportunities",
+            "description": null
+          },
+          {
+            "name": "restoreOpportunity",
+            "description": null
+          },
+          {
+            "name": "restoreOpportunities",
+            "description": null
+          },
+          {
+            "name": "createPeople",
+            "description": null
+          },
+          {
+            "name": "createPerson",
+            "description": null
+          },
+          {
+            "name": "updatePerson",
+            "description": null
+          },
+          {
+            "name": "deletePerson",
+            "description": null
+          },
+          {
+            "name": "updatePeople",
+            "description": null
+          },
+          {
+            "name": "deletePeople",
+            "description": null
+          },
+          {
+            "name": "destroyPerson",
+            "description": null
+          },
+          {
+            "name": "destroyPeople",
+            "description": null
+          },
+          {
+            "name": "restorePerson",
+            "description": null
+          },
+          {
+            "name": "restorePeople",
+            "description": null
+          },
+          {
+            "name": "mergePeople",
+            "description": null
+          },
+          {
+            "name": "createTasks",
+            "description": null
+          },
+          {
+            "name": "createTask",
+            "description": null
+          },
+          {
+            "name": "updateTask",
+            "description": null
+          },
+          {
+            "name": "deleteTask",
+            "description": null
+          },
+          {
+            "name": "updateTasks",
+            "description": null
+          },
+          {
+            "name": "deleteTasks",
+            "description": null
+          },
+          {
+            "name": "destroyTask",
+            "description": null
+          },
+          {
+            "name": "destroyTasks",
+            "description": null
+          },
+          {
+            "name": "restoreTask",
+            "description": null
+          },
+          {
+            "name": "restoreTasks",
+            "description": null
+          },
+          {
+            "name": "createTaskTargets",
+            "description": null
+          },
+          {
+            "name": "createTaskTarget",
+            "description": null
+          },
+          {
+            "name": "updateTaskTarget",
+            "description": null
+          },
+          {
+            "name": "deleteTaskTarget",
+            "description": null
+          },
+          {
+            "name": "updateTaskTargets",
+            "description": null
+          },
+          {
+            "name": "deleteTaskTargets",
+            "description": null
+          },
+          {
+            "name": "destroyTaskTarget",
+            "description": null
+          },
+          {
+            "name": "destroyTaskTargets",
+            "description": null
+          },
+          {
+            "name": "restoreTaskTarget",
+            "description": null
+          },
+          {
+            "name": "restoreTaskTargets",
+            "description": null
+          }
+        ]
+      }
+    }
+  }
+}

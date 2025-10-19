@@ -26,8 +26,8 @@
 ### 🔄 **Complete CRUD Operations**
 Create, read, update, and delete people, companies, tasks, and notes with simple commands
 
-### 🧠 **Dynamic Schema Discovery** 
-Automatically adapts to your Twenty CRM configuration and custom fields
+### 🧠 **Dynamic Schema Discovery**
+Automatically adapts to your Twenty CRM configuration and custom fields directly from exported metadata
 
 ### 🔍 **Advanced Search**
 Search across multiple object types with intelligent filtering and natural language queries
@@ -36,7 +36,7 @@ Search across multiple object types with intelligent filtering and natural langu
 <td width="50%">
 
 ### 📊 **Metadata Access**
-Retrieve schema information and field definitions dynamically
+Inspect metadata and generated tool schemas without leaving your MCP client
 
 ### 💬 **Natural Language Interface**
 Use conversational commands to manage your CRM data effortlessly
@@ -47,6 +47,18 @@ All changes sync immediately with your Twenty CRM instance
 </td>
 </tr>
 </table>
+
+---
+
+## ♻️ Latest Optimizations
+
+- Automatic schema discovery (prefers `./schema`, falls back to `SCHEMA_PATH` if provided)
+- CRUD tools generated directly from exported metadata with required fields and defaults
+- Cleaner request payloads and flexible list filters (typed values, array support)
+- New helper tooling: `get_local_object_schema`, `get_available_operations`, enriched metadata responses
+- Graceful fallbacks keep core CRUD tools available even without local schema files
+- Live schema reloads when export files change—no server restart needed
+- Enriched complex field schemas (addresses, currency, full name, relations, etc.) and weighted multi-object search
 
 ---
 
@@ -127,18 +139,26 @@ Once configured, you can use natural language to interact with your Twenty CRM:
 "Mark the task 'Call client' as completed"
 ```
 
-### 📝 Notes & Search
+### 📝 Notes, Opportunities & Search
 ```
 "Add a note about my meeting with the client today"
 "Search for any records mentioning 'blockchain'"
 "Find all contacts without LinkedIn profiles"
+"Create a new opportunity called Enterprise Rollout"
+```
+
+### 🧭 Schema Utilities
+```
+"Show me the local schema for opportunities"
+"List the GraphQL mutations that include 'Person'"
+"Describe the metadata for the tasks object"
 ```
 
 ---
 
 ## 🛠️ API Reference
 
-The server provides the following tools:
+Tools are generated directly from your exported Twenty schema. Core objects (`people`, `companies`, `notes`, `tasks`, `opportunities`) are always available, and any other active objects in the export are added automatically.
 
 <details>
 <summary><strong>👥 People Operations</strong></summary>
@@ -185,10 +205,23 @@ The server provides the following tools:
 </details>
 
 <details>
+<summary><strong>💼 Opportunity Operations</strong></summary>
+
+- `create_opportunity` - Create a new opportunity
+- `get_opportunity` - Get opportunity details by ID
+- `update_opportunity` - Update opportunity information
+- `list_opportunities` - List opportunities with filtering
+- `delete_opportunity` - Delete an opportunity
+
+</details>
+
+<details>
 <summary><strong>🔍 Metadata & Search</strong></summary>
 
-- `get_metadata_objects` - Get all object types and schemas
-- `get_object_metadata` - Get metadata for specific object
+- `get_metadata_objects` - List active objects from the local export (falls back to API)
+- `get_object_metadata` - Inspect field metadata for a specific object
+- `get_local_object_schema` - Return the generated tool schema (properties, required fields)
+- `get_available_operations` - List GraphQL queries/mutations detected in the export
 - `search_records` - Search across multiple object types
 
 </details>
