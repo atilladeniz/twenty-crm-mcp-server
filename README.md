@@ -110,6 +110,16 @@ Add the server to your `claude_desktop_config.json`:
 
 For self-hosted Twenty instances, change `TWENTY_BASE_URL` to your domain.
 
+### For Claude Code
+
+Run this once to register the MCP server:
+
+```bash
+claude mcp add-json "twenty-crm" '{"command":"node","args":["/path/to/twenty-crm-mcp-server/index.js"],"env":{"TWENTY_API_KEY":"your_api_key_here","TWENTY_BASE_URL":"https://api.twenty.com"}}'
+```
+
+Refer to the [official Claude Code MCP docs](https://modelcontextprotocol.io/) for detailed setup instructions.
+
 5. **Restart Claude Desktop** to load the new server.
 
 ---
