@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node index.js",
     "dev": "node --inspect index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node --test"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^0.6.0"

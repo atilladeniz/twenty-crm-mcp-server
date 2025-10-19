@@ -60,6 +60,7 @@ All changes sync immediately with your Twenty CRM instance
 - Live schema reloads when export files change—no server restart needed
 - Enriched complex field schemas (addresses, currency, full name, relations, etc.) and weighted multi-object search
 - Relation fields now expose friendly aliases (e.g., `companyId`, `noteTargetIds`) so linking records works out of the box
+- Added `noteTargets` helpers for attaching notes to people/companies, plus context-aware error hints and basic fixture tests (`npm test`)
 
 ---
 

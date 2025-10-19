@@ -32,8 +32,9 @@ if (!process.env.SCHEMA_PATH && existsSync(defaultSchemaPath)) {
   process.env.SCHEMA_PATH = defaultSchemaPath;
 }
 
-class TwentyCRMServer {
-  constructor() {
+export class TwentyCRMServer {
+  constructor(options = {}) {
+    this.options = options;
     this.server = new Server(
       {
         name: "twenty-crm",
@@ -63,7 +64,7 @@ class TwentyCRMServer {
     this.objectAliases = new Map();
     this.supportedObjects = [];
 
-    this.rebuildRegistry();
+    this.rebuildRegistry({ log: false });
 
     this.globalToolHandlers = new Map([
       ["get_metadata_objects", async () => this.getMetadataObjects()],
@@ -135,7 +136,7 @@ class TwentyCRMServer {
     }
   }
 
-  rebuildRegistry() {
+  rebuildRegistry({ log = true } = {}) {
     this.objectSchemas.clear();
     this.objectAliases.clear();
     this.supportedObjects = [];
@@ -150,6 +151,10 @@ class TwentyCRMServer {
     }
 
     this.tools = this.generateToolsFromSchema();
+
+    if (log && !this.options.quiet) {
+      console.error("Schema registry rebuilt; tools refreshed");
+    }
   }
 
   refreshSchemaIfChanged() {
@@ -170,6 +175,7 @@ class TwentyCRMServer {
       return;
     }
 
+    console.error("Detected schema file changes; reloading export");
     this.rebuildRegistry();
   }
 
@@ -707,7 +713,12 @@ class TwentyCRMServer {
       return this.extractSingleRelationId(value);
     }
 
-    return this.extractMultipleRelationIds(value);
+    const ids = this.extractMultipleRelationIds(value);
+    if (ids === undefined) {
+      return undefined;
+    }
+
+    return ids;
   }
 
   getRelationCardinality(relationType) {
@@ -830,8 +841,13 @@ class TwentyCRMServer {
         endpoint: error.endpoint,
         method: error.method,
         body: error.body,
-        headers: error.headers
+        headers: error.headers,
+        hint: this.getErrorHint(error)
       };
+
+      if (!payload.hint) {
+        delete payload.hint;
+      }
 
       return this.buildContent(
         `HTTP error ${error.status} on ${error.method} ${error.endpoint}`,
@@ -840,6 +856,30 @@ class TwentyCRMServer {
     }
 
     return this.buildContent(`Error: ${error.message}`);
+  }
+
+  getErrorHint(error) {
+    switch (error.status) {
+      case 400:
+        return "Check the payload; use get_local_object_schema to confirm valid fields.";
+      case 401:
+      case 403:
+        return "Verify TWENTY_API_KEY value and permissions.";
+      case 404:
+        return "Resource not found; confirm the ID and object type.";
+      case 409:
+        return "Conflict detected; ensure the record is in a state that allows this change.";
+      case 422:
+        return "Validation failed; inspect body for field errors and adjust the payload.";
+      case 429:
+        return "Rate limit hit; wait briefly before retrying.";
+      case 500:
+      case 502:
+      case 503:
+        return "Twenty CRM reported a server error; retry in a few moments.";
+      default:
+        return null;
+    }
   }
 
   async getMetadataObjects() {
@@ -1214,5 +1254,15 @@ class TwentyCRMServer {
   }
 }
 
-const server = new TwentyCRMServer();
-server.run().catch(console.error);
+const isCliEntrypoint = (() => {
+  try {
+    return process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1];
+  } catch {
+    return false;
+  }
+})();
+
+if (isCliEntrypoint) {
+  const server = new TwentyCRMServer();
+  server.run().catch(console.error);
+}

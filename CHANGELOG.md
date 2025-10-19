@@ -8,6 +8,7 @@
 - Fallback registry keeps core CRUD tools available even without local schema files
 - Schema changes auto-reload without restart and enrich complex field schemas (addresses, currency, full name, relations, etc.)
 - Relation fields now map to convenient `*Id`/`*Ids` aliases so cross-object links (e.g., person → company) work seamlessly
+- Added support for `noteTargets` objects, contextual error hints, schema reload notifications, and a lightweight `npm test` suite
 - Better error reporting with HTTP details, pagination summaries on list responses, and weighted multi-object search support
 
 ## 0.1.0

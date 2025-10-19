@@ -219,13 +219,17 @@ export class SchemaLoader {
     if (!object) return [];
 
     return object.fields.filter(field => {
-      if (!field.isActive || field.isSystem) {
+      if (!field.isActive) {
         return false;
       }
 
       if (field.type === 'RELATION') {
         const relationType = field.relation?.type;
-        return relationType === 'MANY_TO_ONE' || relationType === 'ONE_TO_ONE';
+        return relationType === 'MANY_TO_ONE' || relationType === 'ONE_TO_ONE' || relationType === 'ONE_TO_MANY' || relationType === 'MANY_TO_MANY';
+      }
+
+      if (field.isSystem) {
+        return false;
       }
 
       return true;
@@ -275,27 +279,52 @@ export class SchemaLoader {
       case 'RELATION':
         if (field.relation) {
           const relationType = field.relation.type;
-          const targetLabel = field.relation.targetObjectMetadata?.labelSingular
+          const targetSingular = field.relation.targetObjectMetadata?.labelSingular
             || field.relation.targetObjectMetadata?.nameSingular
-            || 'record';
+            || field.name;
+          const targetPlural = field.relation.targetObjectMetadata?.labelPlural
+            || field.relation.targetObjectMetadata?.namePlural
+            || `${targetSingular}s`;
 
           if (relationType === 'MANY_TO_ONE' || relationType === 'ONE_TO_ONE') {
-            property.type = 'string';
-            property.description = `ID of the related ${targetLabel}`;
+            property.anyOf = [
+              {
+                type: 'string',
+                description: `ID of the related ${targetSingular}`
+              },
+              {
+                type: 'object',
+                description: `Object containing the related ${targetSingular} ID`,
+                properties: {
+                  id: { type: 'string', description: `${targetSingular} ID` }
+                },
+                required: ['id'],
+                additionalProperties: false
+              }
+            ];
+            delete property.type;
           } else if (relationType === 'ONE_TO_MANY' || relationType === 'MANY_TO_MANY') {
             property.type = 'array';
             property.items = {
-              type: 'string',
-              description: `IDs of related ${field.relation.targetObjectMetadata?.labelPlural || targetLabel + 's'}`
+              anyOf: [
+                { type: 'string', description: `${targetSingular} ID` },
+                {
+                  type: 'object',
+                  description: `Object containing the related ${targetSingular} ID`,
+                  properties: {
+                    id: { type: 'string', description: `${targetSingular} ID` }
+                  },
+                  required: ['id'],
+                  additionalProperties: false
+                }
+              ]
             };
           }
 
           property.relation = {
             type: relationType,
             target: field.relation.targetObjectMetadata?.namePlural,
-            targetLabel:
-              field.relation.targetObjectMetadata?.labelPlural ||
-              field.relation.targetObjectMetadata?.namePlural
+            targetLabel: targetPlural
           };
         }
         break;
@@ -395,20 +424,26 @@ export class SchemaLoader {
           targetNameSingular: field.relation.targetObjectMetadata?.nameSingular,
           targetNamePlural: field.relation.targetObjectMetadata?.namePlural,
           targetLabelSingular: field.relation.targetObjectMetadata?.labelSingular,
-          targetLabelPlural: field.relation.targetObjectMetadata?.labelPlural
+          targetLabelPlural: field.relation.targetObjectMetadata?.labelPlural,
+          targetDescription: prop?.relation?.targetLabel
         });
 
         if (alias && !properties[alias]) {
-          const aliasProperty = relationType === 'MANY_TO_ONE' || relationType === 'ONE_TO_ONE'
-            ? {
-                type: 'string',
-                description: `ID of the related ${field.relation.targetObjectMetadata?.labelSingular || field.relation.targetObjectMetadata?.nameSingular || field.name}`
-              }
-            : {
-                type: 'array',
-                items: { type: 'string' },
-                description: `IDs of related ${field.relation.targetObjectMetadata?.labelPlural || field.relation.targetObjectMetadata?.namePlural || field.name}`
-              };
+          const relationProperty = this.buildFieldProperty({ ...field, name: alias });
+          let aliasProperty;
+
+          if (relationType === 'MANY_TO_ONE' || relationType === 'ONE_TO_ONE') {
+            aliasProperty = {
+              type: 'string',
+              description: relationProperty?.anyOf?.[0]?.description || `ID of the related ${field.relation.targetObjectMetadata?.labelSingular || field.relation.targetObjectMetadata?.nameSingular || field.name}`
+            };
+          } else {
+            aliasProperty = {
+              type: 'array',
+              items: { type: 'string' },
+              description: relationProperty?.relation?.targetLabel
+            };
+          }
 
           properties[alias] = aliasProperty;
         }
@@ -453,6 +488,8 @@ export class SchemaLoader {
       'ARRAY': 'array',
       'RAW_JSON': 'object',
       'RICH_TEXT': 'string',
+      'RICH_TEXT_V2': 'string',
+      'TS_VECTOR': 'string',
       'POSITION': 'number',
       'RELATION': 'string'
     };
@@ -523,7 +560,8 @@ export class SchemaLoader {
       'companies',
       'notes',
       'tasks',
-      'opportunities'
+      'opportunities',
+      'noteTargets'
     ];
   }
 }
