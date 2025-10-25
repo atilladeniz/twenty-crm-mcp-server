@@ -736,6 +736,7 @@ export class TwentyCRMServer {
     }
 
     const { byName, byAlias } = this.getRelationInfo(schema);
+    const linksFields = this.getLinksFieldNames(schema);
     const sanitized = {};
     for (const [key, value] of Object.entries(payload)) {
       if (value === undefined) continue;
@@ -753,6 +754,11 @@ export class TwentyCRMServer {
         if (normalized !== undefined) {
           sanitized[key] = normalized;
         }
+        continue;
+      }
+
+      if (linksFields.has(key)) {
+        sanitized[key] = this.normalizeLinksValue(value);
         continue;
       }
 
@@ -782,6 +788,56 @@ export class TwentyCRMServer {
     });
 
     return { byName, byAlias };
+  }
+
+  getLinksFieldNames(schema) {
+    const linksFields = new Set();
+
+    if (!schema?.fieldMetadata) {
+      return linksFields;
+    }
+
+    schema.fieldMetadata.forEach(field => {
+      if (field.type === 'LINKS') {
+        linksFields.add(field.name);
+      }
+    });
+
+    return linksFields;
+  }
+
+  normalizeLinksValue(value) {
+    if (value === null || value === undefined) {
+      return value;
+    }
+
+    // If it's already an object with the correct structure, return as-is
+    if (typeof value === 'object' && !Array.isArray(value)) {
+      if ('primaryLinkUrl' in value || 'primaryLinkLabel' in value || 'secondaryLinks' in value) {
+        return value;
+      }
+    }
+
+    // If it's a simple string (URL), convert to LINKS structure
+    if (typeof value === 'string') {
+      const trimmed = value.trim();
+      if (trimmed.length === 0) {
+        return {
+          primaryLinkUrl: '',
+          primaryLinkLabel: '',
+          secondaryLinks: null
+        };
+      }
+
+      return {
+        primaryLinkUrl: trimmed,
+        primaryLinkLabel: '',
+        secondaryLinks: null
+      };
+    }
+
+    // Return as-is for other types (let API validation handle it)
+    return value;
   }
 
   normalizeRelationValue(value, relation) {

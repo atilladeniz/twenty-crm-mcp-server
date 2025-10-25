@@ -344,12 +344,19 @@ export class SchemaLoader {
       case 'LINKS':
         property.type = 'object';
         property.properties = {
-          primary: { type: 'string', description: 'Primary link' },
-          secondary: { type: 'string', description: 'Secondary link' },
-          additional: {
+          primaryLinkUrl: { type: 'string', description: 'Primary link URL' },
+          primaryLinkLabel: { type: 'string', description: 'Primary link label/text' },
+          secondaryLinks: {
             type: 'array',
-            items: { type: 'string' },
-            description: 'Additional URLs'
+            items: {
+              type: 'object',
+              properties: {
+                url: { type: 'string', description: 'Secondary link URL' },
+                label: { type: 'string', description: 'Secondary link label' }
+              },
+              additionalProperties: true
+            },
+            description: 'Additional secondary links'
           }
         };
         property.additionalProperties = true;
